@@ -1,62 +1,70 @@
-# Loja de Máquinas
+# Sistema de Gestão de Estoque e Vendas
 
-## Sobre o projeto
+## Sobre o Projeto
 
-A **Loja de Máquinas** é uma aplicação desenvolvida para facilitar a gestão de vendas, estoque e clientes em estabelecimentos que comercializam máquinas e equipamentos. Com ela, é possível realizar o cadastro de produtos, controlar o estoque, gerenciar pedidos de compra/venda, cadastrar clientes e acompanhar o histórico de movimentações de forma prática e intuitiva.
+Este é um sistema completo de gestão de estoque e vendas, desenvolvido em **Python** com **FastAPI**, aplicando boas práticas de arquitetura para entregar uma solução escalável e de fácil manutenção. O projeto foi pensado para performance, organização e integração com ferramentas de análise de dados.
 
-## Funcionalidades
+A aplicação é um MVP que demonstra as melhores práticas em desenvolvimento backend, aliado à integração entre programação, análise de dados e gestão de informações. Reflete um perfil proativo e analítico, unindo conhecimento em Python, SQL e Data Science para transformar dados em informação estratégica e criar soluções reais que geram valor aos negócios.
 
-- Cadastro, edição e exclusão de máquinas/equipamentos.
-- Controle de estoque com alertas de quantidade mínima.
-- Gestão de pedidos de venda e compra.
-- Cadastro de clientes e histórico de compras.
-- Dashboard com indicadores de desempenho da loja.
+---
 
-## Stacks utilizadas
+## Funcionalidades Principais
 
-- **Frontend:** React.js com TypeScript, Styled Components.
-- **Backend:** Node.js com Express, TypeScript.
-- **Banco de Dados:** MongoDB.
-- **Autenticação:** JWT (JSON Web Token).
-- **Containerização:** Docker.
-- **Versionamento:** Git e GitHub.
+- Cadastro de produtos e categorias
+- Controle de estoque em tempo real (entradas, saídas e ajustes)
+- Registro de custos unitários e totais por operação
+- Relatórios exportáveis em Excel (via Pandas), integráveis ao Power BI
+- Organização modular (routers e services) para fácil expansão e manutenção
 
-*(Edite conforme necessário caso sua stack seja diferente)*
+---
 
-## Arquitetura
+## Recursos Técnicos
 
-A arquitetura utilizada segue o padrão **MVC (Model-View-Controller)**, onde:
+- **Banco de Dados:** SQLite para desenvolvimento ágil, com possibilidade de migração para outros SGBDs
+- **ORM:** SQLAlchemy para modelagem e manipulação dos dados
+- **Versionamento:** Alembic para versionar e migrar o banco de dados de forma segura
+- **Arquitetura:** Desacoplada, garantindo clareza e separação de responsabilidades
+- **Injeção de Dependências:** Para conexões seguras e escaláveis
+- **Tipagem Forte:** Typing + Pydantic para robustez e validação dos dados
+- **Exportação de Dados:** Relatórios em Excel via Pandas, preparados para integração com Power BI
+- **Estrutura preparada:** Para autenticação, permissões, e dashboards visuais
 
-- **Model:** Responsável por representar e manipular os dados do negócio, interagindo diretamente com o banco de dados.
-- **View:** Interface visual desenvolvida em React, consumindo a API do backend via requisições HTTP.
-- **Controller:** Camada responsável pela lógica de negócio, validação e controle do fluxo de dados entre Model e View.
+---
 
-Além disso, os serviços estão divididos entre frontend e backend, podendo ser executados separadamente (arquitetura desacoplada), facilitando a escalabilidade e manutenção. A comunicação entre as camadas é feita via API RESTful.
+## Objetivo e Próximos Passos
 
-## Como executar o projeto
+- Criar interface interativa (React ou Streamlit)
+- Implementar sistema de usuários e permissões
+- Automatizar backups e criar alertas de estoque mínimo
+- Expandir relatórios com análises avançadas no Power BI
+
+---
+
+## Como Executar o Projeto
 
 1. Clone o repositório:
    ```bash
    git clone https://github.com/leozinr01/loja-maquinas.git
    ```
 
-2. Instale as dependências do frontend e backend:
+2. Instale as dependências:
    ```bash
-   cd loja-maquinas/frontend
-   npm install
-
-   cd ../backend
-   npm install
+   pip install -r requirements.txt
    ```
 
-3. Configure as variáveis de ambiente conforme os exemplos `.env.example`.
-
-4. Suba os serviços com Docker (opcional):
+3. Execute as migrações do banco de dados:
    ```bash
-   docker-compose up
+   alembic upgrade head
    ```
 
-5. Acesse o frontend pelo navegador e comece a usar!
+4. Inicie o servidor FastAPI:
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+5. Acesse a documentação interativa (Swagger) em: `http://localhost:8000/docs`
+
+---
 
 ## Contribuição
 
